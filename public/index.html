@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SweetTongue Ice Cream & Charlie AI</title>
+  <!-- Google Fonts Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <span class="brand-icon">🍦</span>
+        <div class="brand-text">
+          <span class="brand-name">SweetTongue</span>
+          <span class="brand-sub">Artisan Ice Cream Bar</span>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <button id="cart-toggle-btn" class="btn-cart">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-text">Keranjang</span>
+          <span id="cart-count-badge" class="badge-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <span class="hero-pill">✨ Manis, Lembut & Menyegarkan</span>
+      <h1>Sensasi Es Krim Terbaik di Setiap Suapan!</h1>
+      <p>Pilih rasa favoritmu dari 10 varian istimewa kami atau tanyakan rekomendasi terbaik langsung ke <strong>Charlie</strong>, asisten virtual kami.</p>
+      <div class="hero-buttons">
+        <a href="#catalog" class="btn btn-primary">Lihat Menu Rasa 🍧</a>
+        <button id="hero-chat-trigger" class="btn btn-secondary">Tanya Charlie 🤖</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Price Info Banner -->
+  <section class="pricing-banner">
+    <div class="pricing-card">
+      <div class="price-icon">🍨</div>
+      <div class="price-info">
+        <h3>1 Scoop Cup</h3>
+        <p class="price-tag">Rp 20.000</p>
+      </div>
+    </div>
+    <div class="pricing-card highlighted">
+      <div class="price-icon">🍨🍨</div>
+      <div class="price-info">
+        <span class="badge-saving">Lebih Hemat!</span>
+        <h3>2 Scoop Cup</h3>
+        <p class="price-tag">Rp 35.000</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ice Cream Catalog -->
+  <main id="catalog" class="catalog-section">
+    <div class="section-header">
+      <h2>Katalog Menu Rasa SweetTongue</h2>
+      <p>Dibuat dari bahan-bahan segar berkualitas tinggi dengan tekstur selembut sutra</p>
+    </div>
+
+    <!-- Product Grid will be rendered dynamically by script.js -->
+    <div id="product-grid" class="product-grid"></div>
+  </main>
+
+  <!-- Cart Modal / Drawer -->
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-panel">
+      <div class="cart-header">
+        <h3>🛒 Keranjang Pesanan</h3>
+        <button id="cart-close-btn" class="close-btn" aria-label="Tutup Keranjang">&times;</button>
+      </div>
+
+      <div id="cart-items" class="cart-items">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-summary">
+          <span>Total Pembayaran:</span>
+          <span id="cart-total-price" class="total-amount">Rp 0</span>
+        </div>
+        <button id="wa-order-btn" class="btn btn-whatsapp">
+          <span class="wa-icon">💬</span> Pesan Melalui WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING CHATBOT WIDGET (Tanya Charlie) -->
+  <div class="chat-widget-wrapper">
+    <!-- Chat Trigger Pop Button -->
+    <button id="chat-widget-btn" class="chat-pop-btn" title="Tanya Charlie">
+      <span class="chat-btn-avatar">🤖</span>
+      <span class="chat-btn-label">Tanya Charlie</span>
+      <span class="online-indicator"></span>
+    </button>
+
+    <!-- Floating Chat Window Modal -->
+    <div id="chat-popup" class="chat-popup">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="avatar-badge">🍦</div>
+          <div>
+            <h4>Charlie</h4>
+            <span class="status-text">Online • SweetTongue Assistant</span>
+          </div>
+        </div>
+        <button id="chat-close-btn" class="chat-close-btn" aria-label="Tutup Chat">&times;</button>
+      </div>
+
+      <!-- Quick prompts for customer -->
+      <div class="chat-quick-tags">
+        <button class="quick-chip" data-question="Rasa apa yang paling best seller di sini?">🔥 Best Seller</button>
+        <button class="quick-chip" data-question="Berapa harga 1 scoop dan 2 scoop?">💰 Info Harga</button>
+        <button class="quick-chip" data-question="Bisa rekomendasikan 2 rasa es krim yang enak?">✨ Rekomendasi 2 Rasa</button>
+      </div>
+
+      <!-- Main Chat Box Container -->
+      <div id="chat-box" class="chat-box">
+        <div class="message bot">
+          Halo! Aku <strong>Charlie</strong>, asisten virtual SweetTongue. 🍨 Mau tanya menu favorit, promo, atau butuh rekomendasi rasa hari ini?
+        </div>
+      </div>
+
+      <!-- Chat Input Form -->
+      <form id="chat-form" class="chat-form">
+        <input 
+          type="text" 
+          id="user-input" 
+          placeholder="Tanya rekomendasi rasa ke Charlie..." 
+          autocomplete="off" 
+          required 
+        />
+        <button type="submit" id="chat-send-btn" title="Kirim">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 SweetTongue Ice Cream Bar. Powered by Gemini 2.5 Flash.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
