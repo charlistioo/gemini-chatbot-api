@@ -1,5 +1,7 @@
 # 🍨 SweetTongue Ice Cream & Charlie AI Chatbot
 
+> 🎓 **Project Submission**: Proyek ini dibuat untuk menyelesaikan kelas **Hacktiv8 Maju Bareng AI - Batch 34 Wave 30**.
+
 Aplikasi web pemesanan kedai es krim artisan **SweetTongue** yang dilengkapi dengan katalog menu interaktif, keranjang belanja, integrasi pemesanan via WhatsApp, serta asisten virtual cerdas **Charlie** yang ditenagai oleh **Google Gemini AI API** (`gemini-2.5-flash`).
 
 ---
@@ -127,5 +129,11 @@ Mengirimkan riwayat percakapan ke model Gemini AI dan mengembalikan respon teks 
 
 ---
 
+## 🎓 Keterangan Proyek
+Proyek ini dibuat dan dikembangkan sebagai tugas akhir penyelesaian kelas **Hacktiv8 Maju Bareng AI - Batch 34 Wave 30**.
+
+---
+
 ## 📄 Lisensi
 Proyek ini dibuat untuk keperluan pembelajaran dan pengembangan chatbot AI - [Hacktiv8](https://hacktiv8.com/).
+
